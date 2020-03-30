@@ -1,0 +1,41 @@
+{
+  "name": "api-skeleton",
+  "version": "0.0.1",
+  "description": "Skeleton to build REST APIs with Node/Express",
+  "main": "src/index.js",
+  "scripts": {
+    "prestart": "link-module-alias",
+    "start": "node src/index.js",
+    "predev": "link-module-alias",
+    "dev": "nodemon -r dotenv/config src/index.js",
+    "test": "jest",
+    "coverage": "jest --coverage"
+  },
+  "author": "Arnaldo Bertoni <arnaldo.bertoni@ufabc.edu.br>",
+  "license": "ISC",
+  "_moduleAliases": {
+    "#": "src",
+    "#controllers": "src/controllers",
+    "#domains": "src/domains",
+    "#helpers": "src/helpers",
+    "#repositories": "src/repositories",
+    "#routes": "src/routes"
+  },
+  "dependencies": {
+    "express": "^4.17.1",
+    "link-module-alias": "^1.2.0",
+    "uuid": "^7.0.2",
+    "winston": "^3.2.1"
+  },
+  "devDependencies": {
+    "dotenv": "^8.2.0",
+    "eslint": "^6.8.0",
+    "jest": "^25.2.4",
+    "nodemon": "^2.0.2"
+  },
+  "jest": {
+    "setupFiles": ["dotenv/config"],
+    "testEnvironment": "node",
+    "coveragePathIgnorePatterns": ["/node_modules/"]
+  }
+}

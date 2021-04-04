@@ -22,6 +22,7 @@
     "#routes": "src/routes"
   },
   "dependencies": {
+    "awilix": "^4.3.3",
     "express": "^4.17.1",
     "link-module-alias": "^1.2.0",
     "swagger-jsdoc": "^4.0.0",

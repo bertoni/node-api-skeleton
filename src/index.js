@@ -1,6 +1,7 @@
 const express = require('express')
 const { v4: uuidv4 } = require('uuid')
 const { default: logger, set: loggerSet } = require('#helpers/logger/')
+const container = require('#helpers/di/')
 const { PORT, CID_HEADER } = require('#/config')
 const app = express()
 
@@ -18,6 +19,7 @@ app.use((req, res, next) => {
       body: JSON.stringify(req.body)
     }
   )
+  req.container = container.createScope()
   next()
 })
 require('#routes').boot(app)

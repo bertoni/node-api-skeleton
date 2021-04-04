@@ -1,6 +1,3 @@
-const helloWorldController = require('#controllers/hello-world')
-const { default: logger } = require('#helpers/logger/')
-
 module.exports = app => {
   /**
    * @swagger
@@ -51,11 +48,11 @@ module.exports = app => {
   app.get(
     '/hello-world',
     (req, res, next) => {
-      logger.info('Middleware intercepted')
+      req.container.cradle.logger.info('Middleware intercepted')
       next()
     },
     (req, res) => {
-      helloWorldController.hello(req, res)
+      req.container.cradle.helloWorldController.hello(req, res)
     }
   )
 }

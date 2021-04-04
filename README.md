@@ -11,7 +11,8 @@ Already was wrote some features:
 - Segregation structure folders to give more independence to your modules.
 - Load routes dynamically only adding the route file in your folder.
 - Logger structure to use in whole project.
-- Implemented CorrelationID inside logger to allow track back the the request inside modules.
+- Dynamic Dependency Injection (DI) for Models, Repositories and Controllers with [awilix](https://github.com/jeffijoe/awilix)
+- Implemented CorrelationID inside logger to allow track back the request inside modules.
 - Implementing test structure to facilitate other modules that you will build
 - Using `link-module-alias` to easily call other modules without need know all structure and lose control of paths
 - Hot reload to development faster

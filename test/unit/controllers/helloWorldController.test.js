@@ -1,16 +1,8 @@
-const helloWorldController = require('#controllers/hello-world')
-const helloWorldDomain = require('#domains/hello-world')
-const { default: logger } = require('#helpers/logger/')
+const HelloWorldController = require('#controllers/helloWorldController')
 
-jest.mock('#helpers/logger/', () => ({
-  default: {
-    info: jest.fn(() => true)
-  }
-}))
-
-jest.mock('#domains/hello-world', () => ({
-  hello: jest.fn(() => 'abc')
-}))
+const logger = {
+  info: jest.fn(() => true)
+}
 
 const resp = {
   status: jest.fn(function () { return this }),
@@ -19,6 +11,11 @@ const resp = {
 
 describe('Hello World Controller', () => {
   test('should return response with message json', () => {
+    const helloWorldDomain = {
+      hello: jest.fn(() => 'abc')
+    }
+    const helloWorldController = new HelloWorldController({ helloWorldDomain, logger })
+
     expect(helloWorldController.hello({ query: { name: 'abc' } }, resp)).toBe(resp)
     expect(logger.info).toBeCalled()
     expect(helloWorldDomain.hello).toBeCalled()
@@ -27,6 +24,11 @@ describe('Hello World Controller', () => {
   })
 
   test('should return response message json without name', () => {
+    const helloWorldDomain = {
+      hello: jest.fn(() => 'abc')
+    }
+    const helloWorldController = new HelloWorldController({ helloWorldDomain, logger })
+
     expect(helloWorldController.hello({ query: {} }, resp)).toBe(resp)
     expect(logger.info).toBeCalled()
     expect(helloWorldDomain.hello).toBeCalled()
